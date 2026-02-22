@@ -12,7 +12,7 @@ import static io.cucumber.core.options.Constants.GLUE_PROPERTY_NAME;
 @SelectClasspathResource("features")
 @ConfigurationParameter(
         key = GLUE_PROPERTY_NAME,
-        value = "com.example.ui.stepdefinitions"
+        value = "com.example.ui"
 )
 public class UiCucumberRunner {
 }
