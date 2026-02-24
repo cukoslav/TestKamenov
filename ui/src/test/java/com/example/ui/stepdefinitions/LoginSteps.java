@@ -5,7 +5,6 @@ import com.example.ui.pages.HomePage;
 import com.example.ui.pages.LoginPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import lombok.RequiredArgsConstructor;
 
@@ -22,27 +21,15 @@ public class LoginSteps {
     public void theApplicationIsRunning() {
     }
 
-    @When("I navigate to the login page")
-    public void iNavigateToTheLoginPage() {
-    }
-
-    @And("I enter username {string}")
-    public void iEnterUsername(String username) {
+    @When("the user logs in with username {string} and password {string}")
+    public void theUserLogsIn(String username, String password) {
         pageProvider.getPage().locator(loginPage.usernameField).fill(username);
-    }
-
-    @And("I enter password {string}")
-    public void iEnterPassword(String password) {
         pageProvider.getPage().locator(loginPage.passwordField).fill(password);
-    }
-
-    @And("I click the login button")
-    public void iClickTheLoginButton() {
         pageProvider.getPage().locator(loginPage.loginButton).click();
     }
 
-    @Then("I should see the dashboard")
-    public void iShouldSeeTheDashboard() {
+    @Then("the user should see the dashboard")
+    public void theUserShouldSeeTheDashboard() {
         assertTrue(pageProvider.getPage().locator(homePage.inventoryList).isVisible());
     }
 }

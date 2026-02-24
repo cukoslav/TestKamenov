@@ -12,6 +12,9 @@ public class PlaywrightPageProvider {
     @Value("${ui.headless}")
     private boolean isHeadless;
 
+    @Value(("${ui.timeout.default}"))
+    private int defaultTimeout;
+
     private Page page;
     private Browser browser;
     private Playwright playwright;
@@ -34,7 +37,7 @@ public class PlaywrightPageProvider {
         return playwright.chromium().launch(
                 new BrowserType.LaunchOptions()
                         .setHeadless(isHeadless)
-                        .setTimeout(30000)
+                        .setTimeout(defaultTimeout)
         );
     }
 
@@ -45,11 +48,9 @@ public class PlaywrightPageProvider {
         }
         if (browser != null) {
             browser.close();
-            page = null;
         }
         if (playwright != null) {
             playwright.close();
-            page = null;
         }
     }
 }

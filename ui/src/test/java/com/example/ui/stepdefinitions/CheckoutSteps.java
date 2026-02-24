@@ -14,36 +14,36 @@ public class CheckoutSteps {
     private final PlaywrightPageProvider pageProvider;
     private final CheckoutPage checkoutPage;
 
-    @And("I add the first product to the cart")
-    public void iAddTheFirstProductToTheCart() {
+    @And("the user adds the first product to the cart")
+    public void theUserAddsTheFirstProductToTheCart() {
         pageProvider.getPage().locator(checkoutPage.addToCartButton).first().click();
     }
 
-    @And("I navigate to the cart")
-    public void iNavigateToTheCart() {
+    @And("the user navigates to the cart")
+    public void theUserNavigatesToTheCart() {
         pageProvider.getPage().locator(checkoutPage.cartIcon).click();
     }
 
-    @And("I proceed to checkout")
-    public void iProceedToCheckout() {
+    @And("the user proceeds to checkout")
+    public void theUserProceedsToCheckout() {
         pageProvider.getPage().locator(checkoutPage.checkoutButton).click();
     }
 
-    @And("I fill checkout info with first name {string} last name {string} and zip {string}")
-    public void iFillCheckoutInfo(String firstName, String lastName, String zip) {
+    @And("the user fills checkout info with first name {string} last name {string} and zip {string}")
+    public void theUserFillsCheckoutInfo(String firstName, String lastName, String zip) {
         pageProvider.getPage().locator(checkoutPage.firstNameField).fill(firstName);
         pageProvider.getPage().locator(checkoutPage.lastNameField).fill(lastName);
         pageProvider.getPage().locator(checkoutPage.zipField).fill(zip);
         pageProvider.getPage().locator(checkoutPage.continueButton).click();
     }
 
-    @And("I click finish")
-    public void iClickFinish() {
+    @And("the user clicks finish")
+    public void theUserClicksFinish() {
         pageProvider.getPage().locator(checkoutPage.finishButton).click();
     }
 
-    @Then("I should see order confirmation")
-    public void iShouldSeeOrderConfirmation() {
+    @Then("the user should see order confirmation")
+    public void theUserShouldSeeOrderConfirmation() {
         String actual = pageProvider.getPage().locator(checkoutPage.confirmationMessage).textContent();
         assertEquals("Thank you for your order!", actual);
     }
